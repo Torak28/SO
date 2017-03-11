@@ -11,4 +11,8 @@ for file in $1/*; do
 		echo Usuwanie $file
 		rm $file
 	fi
-done 
+done
+
+#Komendy:
+#-a jako AND
+#-x jako czy execute 
