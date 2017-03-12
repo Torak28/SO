@@ -8,6 +8,7 @@ Oprócz tego postaram się tutaj zamieścić coś w stylu notatek z przedmiotu, 
 
 ### Laboratorium 1
 
+```
 *chmod u+x nazwa_pliku* Nadanie plikowi atrybutu "execute"
 
 *mv stara_nazwa nowa_nazwa* Zmiana nazwy pliku/katalogu
@@ -45,6 +46,8 @@ Oprócz tego postaram się tutaj zamieścić coś w stylu notatek z przedmiotu, 
 *>>* Przekazanie strumienia np. *echo Ala ma kota >> nazwa_pliku.txt* 
 
 *cp żródło cel* Kopiowanie żródła do celu
+```
 
 **Pytania**
+
 Czym są i o co chodzi z dowiązaniami symbolicznymi z 9.sh
