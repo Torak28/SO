@@ -12,3 +12,6 @@ for file in $1/*;do
 		touch -m $file
 	fi
 done 
+
+#Komendy
+# touch -m zmienia czas modyfikacji na aktualny
