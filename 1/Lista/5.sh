@@ -8,7 +8,7 @@
 echo Łącze pliki z $1 w jeden plik tekstowy
 
 #Tworzenie pliczku:
-PLICZKI=$1/pliczki.txt
+PLICZKI=$1/pliczki$2
 touch $PLICZKI
 
 for file in $1/*;do
