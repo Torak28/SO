@@ -9,23 +9,41 @@ Oprócz tego postaram się tutaj zamieścić coś w stylu notatek z przedmiotu, 
 ### Laboratorium 1
 
 *chmod u+x nazwa_pliku* Nadanie plikowi atrybutu "execute"
+
 *mv stara_nazwa nowa_nazwa* Zmiana nazwy pliku/katalogu
+
 *rm plik*  Usunięcie pliku
+
 *$plik_A = $plik_B* Porównanie nazw dwóch plików
+
 *[ $ZMIENNA -eq 0 ]* Porównanie czy zmienna jest równa 0
+
 *mv stare_miejsce nowe_miejsce* Nie tylko zmiana nazwy ale też i przenoszenie
+
 *rmdir* Usunięcie katalogu
+
 *touch nazwa_pliku* Tworzy plik
+
 *touch -m* Zmiana czasu modyfikacji na aktualny
+
 *[ -f $plik_A ]* Sprawdzenie czy plik_A jest plikiem
+
 *[ -d $plik_A ]* Sprawdzenie czy plik_A jest katalogiem 
+
 *[ -s $plik_A ]* Sprawdzenie czy plik_A nie jest pusty
+
 *[ ! -s $plik_A ]* Sprawdzenie czy plik_A jest pusty
+
 *[ <TEST> -a <TEST> ]* Spójnik logiczny AND
+
 *[ -x $plik_A ]* Sprawdzenie czy plik_A jest "execute" 
+
 *i=`expr $i + 1`* Inkrementacja zmiennej i o 1
+
 *ls -S* Wypisuje pliki w zaleznosci od wielkosci
+
 *>>* Przekazanie strumienia np. *echo Ala ma kota >> nazwa_pliku.txt* 
+
 *cp żródło cel* Kopiowanie żródła do celu
 
 **Pytania**
