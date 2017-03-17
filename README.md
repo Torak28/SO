@@ -8,7 +8,6 @@ Oprócz tego postaram się tutaj zamieścić coś w stylu notatek z przedmiotu, 
 
 ## Laboratorium 1
 
-```
 + *chmod u+x nazwa_pliku* Nadanie plikowi atrybutu "execute"
 + *mv stara_nazwa nowa_nazwa* Zmiana nazwy pliku/katalogu
 + *rm plik*  Usunięcie pliku
