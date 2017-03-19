@@ -6,7 +6,7 @@ Zapis mojej pracy na przedmiocie. Poszczególne foldery to numery zajęć na kt�
 
 Oprócz tego postaram się tutaj zamieścić coś w stylu notatek z przedmiotu, które będę robił w trakcie jego trwania
 
-## Laboratorium 1
+## Laboratorium 1(test, ls, cd)
 
 + *chmod u+x nazwa_pliku* Nadanie plikowi atrybutu "execute"
 + *mv stara_nazwa nowa_nazwa* Zmiana nazwy pliku/katalogu
@@ -31,3 +31,9 @@ Oprócz tego postaram się tutaj zamieścić coś w stylu notatek z przedmiotu, 
 ### Uwagi
 
 Do każdego skryptu należy sprawdzić czy ilość argumentów się zgadza, czy argumenty mają odpowiednie typy i czy aby przypadkiem Nasz użytkowni nie jest wredny.
+
+## Laboratorium 2(dowiązania i ścieżki)
+
++ *ln -s sciezka_do_pliku nazwa_dowiazania* Przepis na utworzenie dowiazania symbolicznego(sciezka do pliku to cos w stylu `/home/torak28/Pulpit/SO/2/Lista`)
++ *ln -s ../1/plikA symA* Utworzenie dowiazanie sciezka wzgledna do pliku z innego pliku w katalogu znajdujacym sie w rodzicu dla miejsca z którego dowiązanie tworzymy
++ **
