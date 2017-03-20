@@ -36,4 +36,4 @@ Do każdego skryptu należy sprawdzić czy ilość argumentów się zgadza, czy 
 
 + *ln -s sciezka_do_pliku nazwa_dowiazania* Przepis na utworzenie dowiazania symbolicznego(sciezka do pliku to cos w stylu `/home/torak28/Pulpit/SO/2/Lista`)
 + *ln -s ../1/plikA symA* Utworzenie dowiazanie sciezka wzgledna do pliku z innego pliku w katalogu znajdujacym sie w rodzicu dla miejsca z którego dowiązanie tworzymy
-+ **
++ *ls -R* Rekursywne rozwiniecie 
