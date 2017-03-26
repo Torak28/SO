@@ -38,3 +38,12 @@ Do każdego skryptu należy sprawdzić czy ilość argumentów się zgadza, czy 
 + *ln -s ../1/plikA symA* Utworzenie dowiazanie sciezka wzgledna do pliku z innego pliku w katalogu znajdujacym sie w rodzicu dla miejsca z którego dowiązanie tworzymy
 + *ls -R* Rekursywne rozwiniecie 
 + *dirname* Do wypisania nadżędnego katalogu
+
+## Laboratorium 3(komenda find)
+
++ *find opcje_podstawowe ścieżki_przeszukań wyrażenia_tekstowe* Idea jes taka że przeszukane będą pełne ścieżki z całymi zagnieżdżeniami, przez opcje podstawowe można rozumieć podanie np. ram zagnieżdżania albo sposób klasyfikowania plików, a przez wyrażenie tekstowe rzumiemy np. funkje wypisanie wyniku *opcji_podstawowych* na *ścieżce_przeszukań*
++ *rwxrwxrwx* dla *uuugggooo* czyli prawa dostępu do plików ułożone bitowo dla **u** użytkownika **g** grupy i **o** innych. Do sprawdzania w *find* wykorzystuje się *-perm*
+
+**Przykłady:**
+* *find . -printf Wszystko: -print -type d -printf Katalogi -print*
+* *find . -perm -400 and ! -perm -020* Znalezienie plików które przyzają prawo odczytu właścicielowi ale nie przyznają przwa zapisu właścicielowi grupowemu
