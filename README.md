@@ -47,3 +47,39 @@ Do każdego skryptu należy sprawdzić czy ilość argumentów się zgadza, czy 
 **Przykłady:**
 * *find . -printf Wszystko: -print -type d -printf Katalogi -print*
 * *find . -perm -400 and ! -perm -020* Znalezienie plików które przyzają prawo odczytu właścicielowi ale nie przyznają przwa zapisu właścicielowi grupowemu
+
+## Laboratorium 4(potoki)
+
+```sh
+find > wynik.txt
+head < wynik.txt
+```
++ Wersja bezpotokowa, z przekierowaniem
+```sh
+var=$(find)
+head <<< $find
+```
++ Wersja bezpotokowa, naiwna
+```sh
+find | head
+```
++ Wersja potokowa(dwa procesy jadą na raz)
+
++ *sort* Sortowanie linia po linii
++ *tac* Odwrotność cat - łączy i listuje podane pliki
++ *rev* Czytnie liniami od tyłu. Np. keraJ jako Jarek
++ *uniq* Usuwa powtarzające się linie(do robienia z sortem)
++ *head* Wypisuje 10 pierwszych linii wejścia i igoruje reszte
++ *tail* Wypisuje 10 ostatnich linii wejscia
++ *grep* Filtrowanie
++ *tee* Podwaja standardowe wejście i wysyła je dalej i do podanego dalej pliku
++ *tr* Zastępuje podane znaki na wejściu innymi
++ *read var1 var2* Czyta wejscie i stara sie je rozdzielic na zmienne var1 i var2
+
+```sh
+find | while read var1 var2 var3
+do
+	(...)
+done
+```
++ Wylorzystanie finda, whila i read w potoku
