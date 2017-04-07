@@ -4,21 +4,19 @@
 
 if [ $# -eq 1 -a -d $1 ]
 then
-	#find $1 -type d ! -name $1 #lista katalogow A1
-	#find $wynikA1 -type f -name ".*" | wc -l#Liczy ukryte pliki
-	#find $1 -type f #lista plikow A2
-	#basename $wynikA2 | wc -m #liczy znaki +1	
-	find $1 ! -name $1 -type d -printf "k %p\n" -or -type f -printf "p %p\n" | while read var1 var2
+	find $1 ! -name $1 -type d -printf "K %p\n" -or -type f -printf "P %p\n" | while read typ nazwa
 	do
-		if [ $var1 = "p" ]
+		if [ $typ = "P" ]
 		then
-			var3=`basename $var2 | wc -m`
-			echo $var1 $var2 $var3
+			numer=`basename $nazwa | wc -m`
+			numer=$((numer-1))
+			echo $numer $typ $nazwa
 		fi
-		if [ $var1 = "d" ]
+		if [ $typ = "K" ]
 		then
-			var3=`ls -d $var2/.* | wc -l`
-			echo $var1 $var2 $var3
+			numer=`ls -ad $nazwa/.* | wc -l`
+			numer=$((numer-2))
+			echo $numer $typ $nazwa
 		fi
-	done
+	done | sort -n -r
 fi
