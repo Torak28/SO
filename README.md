@@ -83,3 +83,35 @@ do
 done
 ```
 + Wylorzystanie finda, whila i read w potoku
+
+### Laboratorium 5 (awk)
+
++ *awk 'tekst programu' < nazwa.pliku.do.przetworzenia* Sam opis konstrukcji
++ *awk 'NR==1{print}' README.md* Wypisuje pierwszą linijkę w pliku
++ *awk '{total += $1} END {print total}' zarobki.txt* Podliczy i zsumuje wszystkie linijki w pliku
++ *awk 'BEGIN {printf "%.3f\n", 2005.50 / 3}'* Operacje zmiennoprzecinkowe
++ *awk 'NF==1{print}' nazwaPliku* Wypisze linie w pliku które mają po jednym słowie
++ *awk '{print NF}'* Wypisuje ilosc słow w linijce
++ *awk 'NR % 2 == 0 {print}' nazwaPliku* Wypisze tylko parzyste linijki pliku
++ *index(in, find)* Przeszukuje *in* w poszukiwaniu *find* i podaje pozycje
+```sh
+awk 'BEGIN { print index("Jarek", "ar") }'
+```
++ *length(string)* Zwraca długość stringu
+```sh
+awk 'BEGIN {print length("Jarek")}'
+```
++ *awk '{ print length($0); }' nazwaPliku.txt* Wypisuej ilość liter  linijce
++ *awk 'BEGIN {print tolower("Jarek")}'* Zmienia litery na małe
++ *awk 'BEGIN {print toupper("Jarek")}'* Zmienia litery na duże
++ *awk '{print substr($1,1,1)}' test.txt* Substring z  zadanego obszaru
++ *awk '{split($0,array,":")} END{print array[2]}' nazwaPliku.txt* Podzieli plik na części względem **:** a następnie wypisze drugą **cząstke**
+```
+Dla pliku:
+	aa:bb:cc:dd:ee
+Wynik to:
+	bb
+```
++ *awk -F,* Ustanawia separator między **kolumnami** na **,**
++ *awk -F, '{print $2 > $1".txt"}' nazwaPliku* Dzieli zawartość nazwyPliku ze względu na pierwsza kolumnę do plików o nazwie z pierwszej kolumnie i zawartości z drugiej. Pliki nazywamy zgodnie z kolumna pierwsza z rozszerzeniem **.txt**
+
