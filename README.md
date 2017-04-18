@@ -140,4 +140,30 @@ Wynik to:
 + *a{1,}* Co najmniej 1 elementowy ciąg liter a
 
 **Zakończenie**
++ */regex/ {print $0}* Wzorzec
++ */^a$/ {print $0}* Wzorzec pojedynczej litery a
++ Zmienna jako regex
+```sh
+BEGIN{var="regex"} 
+$0 ~ var {print $0}
+```
++ *match(string,regex,array)* Zaawansowane szukanie podstringów
+```sh
+match( $0 , /(a|b)([0-9]+)/ , tab )
+```
+Da dla tekstu *jakis tekst b2001*
+```sh
+tab[0] = b2001
+tab[1] = b
+tab[2] = 2001
+```
++ *sub(regex, replacement, array)* Zmiana wystąpienia regexa
++ *gsub(regex, replacement, array)* Zmiana wszystkich wystąpien regexa
++ *gensub(regex, replacement, how, tab)* Nie zmienia ale operuje na kopii i ma dodatkowy operator zakresu how. Troszkę inaczej też działa na zmiennych.
+
+Zamiana tesktu "x,xx PLN" na "x zl i xx gr"
+```sh
+echo "2,56 PLN" | gawk '{ print gensub(/([0-9]+),([0-9]+) PLN/ ,"\\1 zl i \\2 gr","g",$0 )}'
+#Wynik: 2 zl i 56 gr
+```
 
