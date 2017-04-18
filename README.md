@@ -84,7 +84,7 @@ done
 ```
 + Wylorzystanie finda, whila i read w potoku
 
-## Laboratorium 5 (awk)
+## Laboratorium 5(awk)
 
 + *awk 'tekst programu' < nazwa.pliku.do.przetworzenia* Sam opis konstrukcji
 + *awk 'NR==1{print}' README.md* Wypisuje pierwszą linijkę w pliku
@@ -117,6 +117,7 @@ Wynik to:
 
 ## Laboratorium 6(wyrażenia regularne)
 
+**Wstęp**
 + *regex a(b|c)de* Szuka ciągu z abde lub acde
 + *regex .* Szuka dowolnego znaku
 + *regex [ab]* i *regex a|b* Są tym samym
@@ -125,6 +126,7 @@ Wynik to:
 + *regex [[:lower:][:upper:][:digit:]]* Oznacza to samo co powyższy bez znaku _
 + *[a-z[:digit:] !]* Jeden znak, który jest małą literą, cyfrą, spacją lub wykrzyknikiem
 
+**Rozwinięcie**
 + *a?* Znak a lub bez znaku
 + *abc?* Ciąg ab lub abc
 + *a(bc)?* Ciąg a lub abc
@@ -137,4 +139,5 @@ Wynik to:
 + *a{1,3}* Od 1 do 3 elementowy ciąg liter a
 + *a{1,}* Co najmniej 1 elementowy ciąg liter a
 
+**Zakończenie**
 
