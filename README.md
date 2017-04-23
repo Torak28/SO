@@ -166,3 +166,121 @@ Zamiana tesktu "x,xx PLN" na "x zl i xx gr"
 echo "2,56 PLN" | gawk '{ print gensub(/([0-9]+),([0-9]+) PLN/ ,"\\1 zl i \\2 gr","g",$0 )}'
 #Wynik: 2 zl i 56 gr
 ```
+
+## Laboratorium 7(perl - podstawy)
+
+Teraz zaczynamy programy od:
+
+```
+#!/usr/bin/perl
+
+use warnings;
+```
+
+Zmienne i tablice:
+```
+$zmienna = 1;
+@tab = ("nic1", "nic2", "nic3");
+```
+
+Drukowanie czegoś:
+```
+print $zmienna;
+print "\n";
+```
+
+Przypisywanie elementow tablicy:
+```
+$zmienna = $tab[0];
+print $zmienna;
+print "\n";
+```
+
+**@tab** jako ilosc elementow tablicy:
+```
+$zmienna = @tab;
+print "Ilosc elementow $zmienna\n";
+```
+
+Wypisywanie tablicy:
+```
+# Wypisanie tablicy 1
+$i = 0;
+for( @tab ){
+	print $tab[$i];
+	print "\n";
+	$i++;
+}
+#nic1
+#nic2
+#nic3
+
+
+# Wypisanie tablicy 2
+for(@tab){
+	print;
+}
+print "\n";
+#nic1nic2nic3
+
+# Wypisanie tablicy 3
+for $_ (@tab){
+	print $_;
+}
+print "\n";
+#nic1nic2nic3
+
+# Wypisanie tablicy 4
+print @tab;
+print "\n";
+#nic1nic2nic3
+
+# Wypisanie tablicy 5
+print join(", ", @tab);
+print "\n";
+#nic1, nic2, nic3
+```
+
+Wypisanie 1 argumentu skryptu:
+```
+print $ARGV[0];
+print "\n";
+```
+
+Ilosc argumentow podanych:
+```
+if(@ARGV == 1){
+	print "tak 1 zmienna\n";
+}else{
+	print "wiecej niz 1?\n";
+}
+```
+
+Otwieranie plikow do uchwytów:
+```
+# Plik zakodowany
+open(UCHWYT, "<plik.txt") or die "Nie udało sie, $!";
+while(<UCHWYT>){
+	print "$_";
+}
+close(UCHWYT);
+
+# Plik z ARGV do uchwytu
+$filename = $ARGV[0];
+open $UCHWYT2, "<", $filename or die $!;
+print <$UCHWYT2>;
+close(UCHWYT2);
+```
+
+Odpowiednik **test**:
+```
+if (-f $ARGV[0]){
+	print "regularny\n"
+}
+
+$sciezka = "plik.txt";
+
+if (-f $sciezka ){
+	print "też regularny\n";
+}
+```
