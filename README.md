@@ -171,39 +171,39 @@ echo "2,56 PLN" | gawk '{ print gensub(/([0-9]+),([0-9]+) PLN/ ,"\\1 zl i \\2 gr
 
 Teraz zaczynamy programy od:
 
-```
+```pl
 #!/usr/bin/perl
 
 use warnings;
 ```
 
 Zmienne i tablice:
-```
+```pl
 $zmienna = 1;
 @tab = ("nic1", "nic2", "nic3");
 ```
 
 Drukowanie czegoś:
-```
+```pl
 print $zmienna;
 print "\n";
 ```
 
 Przypisywanie elementow tablicy:
-```
+```pl
 $zmienna = $tab[0];
 print $zmienna;
 print "\n";
 ```
 
 **@tab** jako ilosc elementow tablicy:
-```
+```pl
 $zmienna = @tab;
 print "Ilosc elementow $zmienna\n";
 ```
 
 Wypisywanie tablicy:
-```
+```pl
 # Wypisanie tablicy 1
 $i = 0;
 for( @tab ){
@@ -242,13 +242,13 @@ print "\n";
 ```
 
 Wypisanie 1 argumentu skryptu:
-```
+```pl
 print $ARGV[0];
 print "\n";
 ```
 
 Ilosc argumentow podanych:
-```
+```pl
 if(@ARGV == 1){
 	print "tak 1 zmienna\n";
 }else{
@@ -257,7 +257,7 @@ if(@ARGV == 1){
 ```
 
 Otwieranie plikow do uchwytów:
-```
+```pl
 # Plik zakodowany
 open(UCHWYT, "<plik.txt") or die "Nie udało sie, $!";
 while(<UCHWYT>){
@@ -273,7 +273,7 @@ close(UCHWYT2);
 ```
 
 Odpowiednik **test**:
-```
+```pl
 if (-f $ARGV[0]){
 	print "regularny\n"
 }
