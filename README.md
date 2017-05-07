@@ -284,3 +284,55 @@ if (-f $sciezka ){
 	print "też regularny\n";
 }
 ```
+
+## Laboratorium 8(find)
+
+Otwarcie katalogu do uchwytu:
+
+```pl
+opendir(DIR, $sciezka) or die "Nie udalo sie otworzyc: $!";
+@pliki = readdir DIR;
+closedir(DIR);
+```
+
+Dołączenie **File::Find:**
+```pl
+use File::Find;
+```
+
+Wypisanie nazw katalogów w ścieżce:
+```pl
+$sciezka = $ARGV[0];
+
+find(\&print_name_if_dir, $sciezka);
+
+sub print_name_if_dir{
+	print $_ if -d $_;
+	print "\n" if -d $_;
+}
+```
+
+Hasze, czyli słowniki:
+```pl
+%hasz = ('klucz1' => 'wartosc1', 'klucz2' => 'wartosc2', 'klucz3' => 'wartosc3');
+$hasz{ 'klucz3' } = 'wartosc3n';
+
+for (keys %hasz){
+	print "klucz to " . $_;
+	print " wartosc to " . $hasz{ $_ };
+	print "\n";
+}
+```
+
+wypisanie wielkosci pliczkow:
+```pl
+find(\&print_name_if_dir, $sciezka);
+
+sub print_name_if_dir{
+	($dev,$ino,$mode,$nlink,$uid,$gid,$rdev,$size,
+        $atime,$mtime,$ctime,$blksize,$blocks) = stat $_;
+	if( -f $_ ){
+		print "$_ $size \n";
+	}
+}
+```
