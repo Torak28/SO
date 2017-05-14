@@ -336,3 +336,223 @@ sub print_name_if_dir{
 	}
 }
 ```
+
+## Laboratorium 9(wyrazenia refularne)
+
+Dzielenie i łączenie:
+```
+print join(':', split(//, 'abc')), "\n";
+#output: a:b:c
+
+print join(':', split(/b/, 'abc')), "\n";
+#output: a:c
+
+print join(':', split(//, 'abc', 1)), "\n";
+#output: abc
+
+print join(':', split(//, 'abc', 2)), "\n";
+#output: a:bc
+
+print join(':', split(//, 'abc', 3)), "\n";
+#output: a:b:c
+```
+
+Transliteracja i podstawienie:
+```
+$string = "To+jest+mój+text\n";
+print $string;
+$string =~ tr/+/ /;
+print $string, "\n";
+#output: To jest moj text
+
+$string = "To-jest-moj-text\n";
+print $string;
+$string =~ s/\-/ /g;
+print $string;
+#output: To jest moj text
+```
+
+Transliteracja:
+```
+$tekst = "0Ala123 ma45 kota6789";
+$tekst2 = "0Ala123 ma45 kota6789";
+$tekst3 = "0Ala123 ma45 kota6789";
+
+$tekst =~ tr/0-9/*/;
+#Cyfry na *
+print $tekst, "\n";
+#output: *Ala*** ma** kota****
+
+$tekst2 =~ tr/0-9/*/c;
+#Odwrotność cyfr na gwiazdki
+print $tekst2, "\n";
+#output: 0***123***45*****6789
+
+
+$tekst3 =~ tr/0-9/*/d;
+#Wszystkie zera na gwiazdki a inne cyfry usuwa!
+print $tekst3, "\n";
+#output: *Ala ma kota
+
+$tekst4 =~ tr/0-9/*/s;
+#Squash duplicate replaced characters?
+print $tekst4, "\n";
+#output: Ala* ma* kota*
+
+$tekst5 =~ tr/0-9/*/r;
+#Sam tekst5 jest niezmieniony ale zapytanie zwrocilo zmieniony tekst
+print $tekst5, "\n";
+#output: 0Ala123 ma45 kota6789
+```
+
+Split:
+```
+$x = "Moj super        tekst";
+@word = split /\s+/, $x;
+# \s+ dzieli na slowa, lepsze to niz ' ' bo zadaiala przy duzych ilosci spacji
+
+print $x, "\n";
+
+print $word[0], "\n";
+#output: Moj
+print $word[1], "\n";
+#output: super
+print $word[2], "\n";
+#output: tekst
+
+print "\n";
+
+$x2 = "1.618,2.718,   3.142";
+@const = split /,\s*/, $x2;
+# \s* dzieli na liczby!
+print $x2, "\n";
+
+print $const[0], "\n";
+#output: 1.618
+print $const[1], "\n";
+#output: 2.718
+print $const[2], "\n";
+#output: 3.142
+
+print "\n";
+
+$x3 = "/usr/bin";
+@parts = split m!(/)!, $x3;
+# split po // z uzyciem matcha do zgrupowania po /
+print $x3, "\n";
+
+print $parts[0], "\n";
+#output: ''
+print $parts[1], "\n";
+#output: '/'
+print $parts[2], "\n";
+#output: 'usr'
+print $parts[3], "\n";
+#output: '/'
+print $parts[4], "\n";
+#output: 'bin'
+```
+
+Jeszcze więcej zamieniania słów:
+```
+$x = "Moj super        tekst";
+@word = split /\s+/, $x;
+# \s+ dzieli na slowa, lepsze to niz ' ' bo zadaiala przy duzych ilosci spacji
+
+print $x, "\n";
+
+print $word[0], "\n";
+#output: Moj
+print $word[1], "\n";
+#output: super
+print $word[2], "\n";
+#output: tekst
+
+print "\n";
+
+$x2 = "1.618,2.718,   3.142";
+@const = split /,\s*/, $x2;
+# \s* dzieli na liczby!
+print $x2, "\n";
+
+print $const[0], "\n";
+#output: 1.618
+print $const[1], "\n";
+#output: 2.718
+print $const[2], "\n";
+#output: 3.142
+
+print "\n";
+
+$x3 = "/usr/bin";
+@parts = split m!(/)!, $x3;
+# split po // z uzyciem matcha do zgrupowania po /
+print $x3, "\n";
+
+print $parts[0], "\n";
+#output: ''
+print $parts[1], "\n";
+#output: '/'
+print $parts[2], "\n";
+#output: 'usr'
+print $parts[3], "\n";
+#output: '/'
+print $parts[4], "\n";
+#output: 'bin'
+
+
+$x4 = "Time to feed the cat!";
+print $x4, "\n";
+$x4 =~ s/cat/hacker/;
+print $x4, "\n";
+#output: Time to feed the hacker!
+
+$x5 = "'quoted words'";
+print $x5, "\n";
+$x5 =~ s/^'(.*)'$/$1/;
+print $x5, "\n";
+# output: "quoted words"
+```
+
+Maczowanie w pełnej okrasie:
+```
+print "Tak\n" if "Hello World" =~ /World/;
+#Maczuje =~
+
+print "Nie\n" if "Hello World" !~ /World/;
+#Nie maczuje !~
+
+
+$var = "World";
+print "Maczuje\n" if "Hello World" =~ /$var/;
+
+"Hello World" =~ /world/;  # Nope nie ta wielkosc liter
+"Hello World" =~ /o W/;    # Yup ' ' traktowana jako normalna spacja
+"Hello World" =~ /World /; # Nope nie ma ' ' pod koniec :c
+
+"Hello World" =~ /o/;       # Maczuje 'o' w Hello
+"That hat is red" =~ /hat/; # Maczuje 'hat' w that
+
+"2+2=4" =~ /2+2/;    # Nope '+' psuje
+"2+2=4" =~ /2\+2/;   # Maczuje '+' jest poprzedzony \
+
+
+"housekeeper" =~ /keeper/;         # Yup
+"housekeeper" =~ /^keeper/;        # Nope nie ma czegoś takiego na początku
+"housekeeper" =~ /keeper$/;        # Yup
+"housekeeper\n" =~ /keeper$/;      # Yup
+"housekeeper" =~ /^housekeeper$/;  # Yup
+
+"cat" =~ /cat/;            # Maczuje 'cat'
+"cat" =~ /[bcr]at/;        # Maczuje 'bat', 'cat', lub 'rat'
+"a15" =~ /[0-9a-fA-F]/;    # Maczuje Hex
+
+"yEs" =~ /[yY][eE][sS]/; # Maczuje yes w każdej znakowej kombinacji
+"yEs" =~ /yes/i;         # To samo co powyżej ale krócej
+
+$x = "Housecat catenates house and cat";
+$x =~ /\bcat/;  # matches cat in 'catenates'
+$x =~ /cat\b/;  # matches cat in 'housecat'
+$x =~ /\bcat\b/;  # matches 'cat' at end of string
+```
+
