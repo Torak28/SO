@@ -340,7 +340,7 @@ sub print_name_if_dir{
 ## Laboratorium 9(wyrazenia refularne)
 
 Dzielenie i łączenie:
-```
+```pl
 print join(':', split(//, 'abc')), "\n";
 #output: a:b:c
 
@@ -358,7 +358,7 @@ print join(':', split(//, 'abc', 3)), "\n";
 ```
 
 Transliteracja i podstawienie:
-```
+```pl
 $string = "To+jest+mój+text\n";
 print $string;
 $string =~ tr/+/ /;
@@ -373,7 +373,7 @@ print $string;
 ```
 
 Transliteracja:
-```
+```pl
 $tekst = "0Ala123 ma45 kota6789";
 $tekst2 = "0Ala123 ma45 kota6789";
 $tekst3 = "0Ala123 ma45 kota6789";
@@ -406,7 +406,7 @@ print $tekst5, "\n";
 ```
 
 Split:
-```
+```pl
 $x = "Moj super        tekst";
 @word = split /\s+/, $x;
 # \s+ dzieli na slowa, lepsze to niz ' ' bo zadaiala przy duzych ilosci spacji
@@ -454,7 +454,7 @@ print $parts[4], "\n";
 ```
 
 Jeszcze więcej zamieniania słów:
-```
+```pl
 $x = "Moj super        tekst";
 @word = split /\s+/, $x;
 # \s+ dzieli na slowa, lepsze to niz ' ' bo zadaiala przy duzych ilosci spacji
@@ -515,7 +515,7 @@ print $x5, "\n";
 ```
 
 Maczowanie w pełnej okrasie:
-```
+```pl
 print "Tak\n" if "Hello World" =~ /World/;
 #Maczuje =~
 
@@ -541,7 +541,7 @@ print "Maczuje\n" if "Hello World" =~ /$var/;
 "housekeeper" =~ /^keeper/;        # Nope nie ma czegoś takiego na początku
 "housekeeper" =~ /keeper$/;        # Yup
 "housekeeper\n" =~ /keeper$/;      # Yup
-"housekeeper" =~ /^housekeeper$/;  # Yup
+"housekeeper" =~ /^housekeeper$/;  # Yups
 
 "cat" =~ /cat/;            # Maczuje 'cat'
 "cat" =~ /[bcr]at/;        # Maczuje 'bat', 'cat', lub 'rat'
