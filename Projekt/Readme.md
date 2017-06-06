@@ -2,7 +2,7 @@
 
 ### Odpalenie wątku
 
-```
+```cpp
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
@@ -53,7 +53,7 @@ Jeden wątek z zasobem globalnym.
 
 ### We have to go deeper
 
-```
+```c
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
