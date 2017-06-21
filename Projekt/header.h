@@ -1,0 +1,11 @@
+#include <iostream>
+#include <stdlib.h>
+#include <queue>
+#include <thread>
+#include <mutex>
+#include <chrono>
+#include <ctime>
+#include <ncurses.h>
+#include <string>
+#include <iomanip>
+#include <condition_variable>
