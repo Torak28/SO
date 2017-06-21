@@ -115,6 +115,8 @@ int KucharzeGotowi = 0;
 int potrawyGotowe = 0;
 int ugotowaneGotowe = 0;
 int zapelniona = 0;
+int koniecX = 0;
+condition_variable koniec;
 condition_variable gotowe;
 condition_variable gotoweUgotowane;
 condition_variable gotowePotrawy;
@@ -159,7 +161,7 @@ void ProducentKlientow(int ile)
 		mxKlienciStoliki.lock();
 		KolejkaCzekajaca.push_back(k1);
 		mxKlienciStoliki.unlock();
-		this_thread::sleep_for(std::chrono::seconds(1));
+		//this_thread::sleep_for(std::chrono::seconds(1));
 		iter++;
 		ile--;
 	} while (ile);
@@ -174,7 +176,7 @@ void ProducentKelnerow(int ile)
 	do {
 		Kelner k1(iter, ImionaKelnerow[rand() % (sizeof(ImionaKelnerow) / sizeof(*ImionaKelnerow))], 1);
 		unique_lock<mutex> locker(mxKelnerzy);
-		gotoweKlient.wait(locker, [] {return KlienciPrzyStolach == 1; });
+		gotowe.wait(locker, [] {return zapelniona == 1; });
 		Kelnerzy.push_back(k1);
 		locker.unlock();
 		this_thread::sleep_for(std::chrono::seconds(1));
@@ -211,7 +213,7 @@ void KlienciDoStolikow(int ile)
 	int stolik3 = 0;
 	int stolik4 = 0;
 	unique_lock<mutex> locker(mxKlienciStoliki);
-	gotowe.wait(locker, [] {return zapelniona == 1; });
+	gotoweKucharz.wait(locker, [] {return KucharzeGotowi == 1; });
 	locker.unlock();
 	if (KolejkaCzekajaca.size() != 0) {
 		do {
@@ -341,12 +343,17 @@ void usuwaniekolejki(int ile) {
 		this_thread::sleep_for(std::chrono::seconds(zmienaCzasowa));
 		ile--;
 	} while (ile);
+	if(Zamowienia.size() == 0){
+		this_thread::sleep_for(std::chrono::seconds(5));
+		koniecX = 1;
+		koniec.notify_all();
+	}
 }
 
 void WyborPotrawy(int ile) {
 	srand(time(NULL));
 	unique_lock<mutex> locker(mxKlienciStoliki);
-	gotoweKucharz.wait(locker, [] {return KucharzeGotowi == 1; });
+	gotoweKlient.wait(locker, [] {return KlienciPrzyStolach == 1; });
 	locker.unlock();
 	for (int ile = 0; ile < (int)Klienci.size(); ile++) {
 		if (Klienci[ile].stan == 1) {
@@ -701,7 +708,7 @@ void Ncurses()
 	initscr();
 	start_color();
 	init_pair(5,COLOR_BLUE,COLOR_BLACK);
-	for (;;) {
+	do {
 		clear();
 		attron(COLOR_PAIR(5));
 		printw("Jaroslaw Ciolek-Zelechowski, 218386. Restouracja na watkach.\n\n");
@@ -713,7 +720,13 @@ void Ncurses()
 		wypiszZamowinia();
 		refresh();
 		this_thread::sleep_for(std::chrono::seconds(1));
-	}
+	}while(!koniecX);
+	clear();
+	attron(COLOR_PAIR(5));
+	printw("Jaroslaw Ciolek-Zelechowski, 218386. Restouracja na watkach.\n\n");
+	mvprintw(5,25, "Koniec");
+	attroff(COLOR_PAIR(5));
+	mvprintw(21,10,"Nacisnij dowony przycisk aby kontyuowac");
 	getch();
 	endwin();
 }
